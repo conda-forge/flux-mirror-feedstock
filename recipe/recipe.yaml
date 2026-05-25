@@ -1,5 +1,5 @@
 context:
-  version: "0.2.0"
+  version: "0.4.0"
 
 package:
   name: flux-mirror
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/fluxcd/flux-mirror/archive/refs/tags/v${{ version }}.tar.gz
-    sha256: b707061c81725d4bde27a07669d84d76202cdd7951fad62ff04147549196c637
+    sha256: 075a66ab534fdbdcb3e4b36491fb6c84ca2e88ee13211e7218b08c9bab218110
     target_directory: src
   - url: https://raw.githubusercontent.com/in-toto/in-toto-golang/refs/heads/master/LICENSE
     sha256: b5c26c8a2ad6dd7cac6646e470a32ee42d23c36124caac4e66c989b6545b2a44
@@ -34,15 +34,13 @@ build:
     - cd src
     - go-licenses save ./cmd/flux-mirror --save_path ../library_licenses --ignore github.com/cyberphone/json-canonicalization --ignore github.com/in-toto/attestation --ignore github.com/in-toto/in-toto-golang
     - if: unix
-      then: go build -v -o $PREFIX/bin/flux-mirror -ldflags="-s -w -X main.VERSION=${{ version }}" ./cmd/flux-mirror
-      else: go build -v -o %LIBRARY_BIN%\flux-mirror.exe -ldflags="-s -w -X main.VERSION=${{ version }}" ./cmd/flux-mirror
-    - if: unix
       then:
+        - go build -v -o $PREFIX/bin/flux-mirror -ldflags="-s -w -X main.VERSION=${{ version }}" ./cmd/flux-mirror
         - mkdir -p $PREFIX/share/zsh/site-functions $PREFIX/share/bash-completion/completions $PREFIX/share/fish/vendor_completions.d
         - $PREFIX/bin/flux-mirror completion zsh > $PREFIX/share/zsh/site-functions/_flux-mirror
         - $PREFIX/bin/flux-mirror completion bash > $PREFIX/share/bash-completion/completions/flux-mirror
         - $PREFIX/bin/flux-mirror completion fish > $PREFIX/share/fish/vendor_completions.d/flux-mirror.fish
-
+      else: go build -v -o %LIBRARY_BIN%\flux-mirror.exe -ldflags="-s -w -X main.VERSION=${{ version }}" ./cmd/flux-mirror
 requirements:
   build:
     - ${{ compiler("go-nocgo") }}
