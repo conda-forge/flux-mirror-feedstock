@@ -1,5 +1,5 @@
 context:
-  version: "0.1.0"
+  version: "0.4.0"
 
 package:
   name: flux-mirror
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/fluxcd/flux-mirror/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 3f5cb0d09dd64bbd859107d166c7bfb0e165fcd1d5f5181295f4fa01f85026ee
+  sha256: 075a66ab534fdbdcb3e4b36491fb6c84ca2e88ee13211e7218b08c9bab218110
   target_directory: src
 
 build:

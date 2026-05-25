@@ -188,6 +188,3 @@ Feedstock Maintainers
 
 * [@aaronlionsheep](https://github.com/aaronlionsheep/)
 
-
-<!-- dummy commit to enable rerendering -->
-
