@@ -1,5 +1,5 @@
 context:
-  version: "0.16.0"
+  version: "0.17.0"
 
 package:
   name: flux-mirror
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/fluxcd/flux-mirror/archive/refs/tags/v${{ version }}.tar.gz
-    sha256: 8752619586b8292957008f628e542ae4bf6be8cbc5719b28c374245bf7f28ead
+    sha256: 5fb2cdd2e7f99bd53dbad9ff8097cf8bc07b84c575ea026cb393c5a97f608ee3
     target_directory: src
   - url: https://raw.githubusercontent.com/in-toto/in-toto-golang/refs/heads/master/LICENSE
     sha256: b5c26c8a2ad6dd7cac6646e470a32ee42d23c36124caac4e66c989b6545b2a44
